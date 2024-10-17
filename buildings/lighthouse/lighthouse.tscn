@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwff3dd5pl1pl"]
+
+[ext_resource type="Texture2D" uid="uid://j5htsj3cq6bn" path="res://assets/lighthouse.png" id="1_518s4"]
+[ext_resource type="Script" path="res://buildings/lighthouse/lighthouse.gd" id="1_ofuoi"]
+[ext_resource type="FontFile" uid="uid://cs8ulgtmq8562" path="res://assets/fonts/Tiny5-Regular.ttf" id="3_et8k4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2je1x"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6tad6"]
+radius = 16.6433
+
+[node name="Lighthouse" type="StaticBody2D"]
+z_index = 1
+collision_layer = 65
+script = ExtResource("1_ofuoi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -13)
+texture = ExtResource("1_518s4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_2je1x")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_6tad6")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -13.0
+offset_top = 1.0
+offset_right = 45.0
+offset_bottom = 24.0
+theme_override_fonts/font = ExtResource("3_et8k4")
+theme_override_font_sizes/font_size = 8
+text = "HP: 100"

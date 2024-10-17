@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://daraj4xw4tmf0"]
+
+[ext_resource type="Script" path="res://buildings/cannon/cannon.gd" id="1_4gq4n"]
+[ext_resource type="Texture2D" uid="uid://df0rqqnjetqjj" path="res://assets/cannon.png" id="1_bnk7j"]
+[ext_resource type="PackedScene" uid="uid://4iwx1yfg8ag8" path="res://utils/bullet/bullet.tscn" id="2_o4gxh"]
+[ext_resource type="PackedScene" uid="uid://b0w3caswmfdt4" path="res://utils/particles/explosion.tscn" id="3_d4cpd"]
+[ext_resource type="PackedScene" uid="uid://bnwmplm8kikrv" path="res://utils/attack_area/attack_area.tscn" id="3_nh547"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cooyj"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_27vuf"]
+radius = 43.0116
+
+[node name="Cannon" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_4gq4n")
+bullet_scene = ExtResource("2_o4gxh")
+death_particle = ExtResource("3_d4cpd")
+
+[node name="CPUParticles2D" parent="." instance=ExtResource("3_d4cpd")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+texture = ExtResource("1_bnk7j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_cooyj")
+
+[node name="AttackArea" parent="." instance=ExtResource("3_nh547")]
+position = Vector2(0, -5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_27vuf")
+debug_color = Color(1, 0.6, 0.701961, 0.419608)
